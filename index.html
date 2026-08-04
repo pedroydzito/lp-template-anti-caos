@@ -5,20 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Templates Anti Caos, estruture toda a operação do seu lançamento no ClickUp</title>
 <meta name="description" content="Em apenas 1 dia, estruture toda a operação do seu lançamento dentro do ClickUp. Não organize o caos. Estruture o lançamento antes que o caos aconteça.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- Preload dos arquivos de fonte (subset latin, os únicos que o português usa).
      Sem isto a fonte só era solicitada DEPOIS que o CSS assíncrono chegava; a troca
      de fonte no <h1> acontecia tarde e virava um candidato a LCP lá no fim. -->
 <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/outfit/v15/QGYvz_MVcBeNP4NJtEtq.woff2">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2">
-<!-- Preload da imagem de LCP para descoberta imediata pelo navegador -->
-<link rel="preload" as="image" href="https://institutoelpo.com/wp-content/uploads/2026/08/logo.svg" fetchpriority="high">
-<!-- Só o Outfit vem do Google; o Inter é declarado no <style> abaixo. Faixa variável
-     (600..800) em vez de pesos soltos = um arquivo só. Se a URL do preload mudar,
-     este CSS continua entregando a fonte normalmente. -->
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600..800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@600..800&display=swap"></noscript>
 <script>document.documentElement.className+=' js'</script>
 <style>
 /* Declaração direta de Outfit e Inter para renderização instantânea no primeiro paint, sem aguardar CSS externo do Google */
@@ -73,7 +65,7 @@ body{
   overflow-x:hidden;
   max-width:100vw;
 }
-h1,h2,h3,h4,.display{font-family:'Outfit',sans-serif;line-height:1.08;letter-spacing:-.02em;font-weight:700}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif;line-height:1.08;letter-spacing:-.02em;font-weight:700}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 ::selection{background:var(--orange);color:#fff}
@@ -93,7 +85,6 @@ img{max-width:100%;display:block}
 h2.title{font-size:clamp(30px,4.6vw,50px);letter-spacing:-.03em}
 .lead{color:var(--muted);font-size:clamp(17px,2vw,20px);line-height:1.6;margin-top:20px}
 .accent{color:var(--orange)}
-.ink-strong{color:var(--ink)}
 
 /* Buttons */
 .btn{
@@ -118,8 +109,8 @@ header .bar{display:flex;align-items:center;justify-content:space-between;paddin
 header.scrolled{background:rgba(255,255,255,.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--border),0 8px 30px -18px rgba(23,20,15,.2)}
 header.scrolled .bar{padding-top:10px;padding-bottom:10px}
 .brand{display:flex;align-items:center;gap:12px;margin-left:-3px}
-.brand img{height:44px;width:auto;transition:height .3s}
-header.scrolled .brand img{height:38px}
+.brand-logo{height:44px;width:auto;display:block;color:#000;transition:height .3s}
+header.scrolled .brand-logo{height:38px}
 .nav-links{display:flex;align-items:center;gap:34px}
 .nav-links a{font-size:15px;font-weight:500;color:var(--ink-2);transition:color .2s}
 .nav-links a:hover{color:var(--orange-700)}
@@ -212,7 +203,6 @@ h1.hero-title .hl{color:var(--orange);
 .ccard .cic{width:54px;height:54px;border-radius:14px;background:var(--orange-050);color:var(--orange);display:flex;align-items:center;justify-content:center;transition:transform .3s var(--ease);flex-shrink:0}
 .ccard:hover .cic{transform:scale(1.12) rotate(-3deg)}
 .ccard p{font-size:13px;font-weight:600;color:var(--ink-2);line-height:1.4;word-break:break-word}
-.problem-cta{text-align:center;margin-top:48px}
 .callout-band{background:var(--ink);color:#fff;position:relative;overflow:hidden;padding:clamp(48px,6.5vw,80px) 0}
 .callout-band::after{content:"";position:absolute;right:-60px;top:50%;transform:translateY(-50%);width:420px;height:420px;background:radial-gradient(circle,rgba(255,138,0,.2),transparent 68%);pointer-events:none}
 .callout-band .container{position:relative;z-index:1;display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,4vw,48px);align-items:stretch}
@@ -370,13 +360,6 @@ h1.hero-title .hl{color:var(--orange);
 .about-photo:hover .frame{transform:translateY(-5px);box-shadow:var(--shadow-lg),0 30px 60px -28px rgba(255,138,0,.4)}
 .about-photo .frame img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .about-photo:hover .frame img{transform:scale(1.05)}
-.ph-photo{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:#cc6a00;
-  background:linear-gradient(160deg,#ffe7c7,#ffd0a0);
-  background-image:linear-gradient(160deg,rgba(255,231,199,.6),rgba(255,208,160,.6)),
-    radial-gradient(circle at 1px 1px,rgba(204,106,0,.14) 1px,transparent 0);
-  background-size:cover,18px 18px}
-.ph-photo b{font-family:'Outfit';font-weight:700;font-size:20px;color:var(--orange-700);margin-top:6px}
-.ph-photo span{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:rgba(204,106,0,.7)}
 .about-badge{position:absolute;bottom:-22px;left:-22px;background:#fff;border:1px solid var(--border);border-radius:var(--r-md);box-shadow:var(--shadow-md);padding:16px 20px}
 .about-badge b{font-family:'Outfit';font-weight:800;font-size:28px;display:block;color:var(--orange)}
 .about-badge span{font-size:12.5px;color:var(--muted);font-weight:500}
@@ -411,7 +394,7 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
 .foot-top{display:flex;flex-wrap:wrap;justify-content:space-between;gap:34px;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.09)}
 .foot-brand{max-width:340px}
 .foot-brand .logo-mark{display:inline-block;margin-left:-2px}
-.foot-brand .logo-mark svg{height:70px;width:auto;display:block}
+.foot-brand .logo-mark svg{height:70px;width:auto;display:block;color:#fff}
 .foot-brand p{margin-top:18px;font-size:14px;color:#9a9285;line-height:1.6}
 .socials{display:flex;gap:12px;margin-top:20px}
 .socials a{width:42px;height:42px;border-radius:12px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;color:#cbc4b7;transition:.25s}
@@ -420,9 +403,8 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
 .foot-bottom{padding-top:26px;display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;font-size:13px;color:#8a8276}
 
 /* Micro-interactions */
-.incl,.price-card,.panel,.about-badge,.philosophy,.float-chip,.mock-tag,.eyebrow{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
+.incl,.panel,.about-badge,.philosophy,.float-chip,.mock-tag,.eyebrow{transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease)}
 .incl:hover{transform:translateX(4px);box-shadow:var(--shadow-md);border-color:var(--orange-100)}
-.price-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg),0 30px 60px -30px rgba(255,138,0,.35)}
 .panel:hover{transform:translateY(-4px)}
 .panel.dream:hover{box-shadow:0 30px 70px -30px rgba(255,138,0,.4)}
 .panel.pain:hover{box-shadow:var(--shadow-md)}
@@ -437,8 +419,8 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
 .strip .bar-dark:hover{transform:translateY(-3px)}
 .foot-brand .logo-mark svg{transition:transform .4s var(--ease)}
 .foot-brand .logo-mark:hover svg{transform:scale(1.04)}
-.brand img{transition:height .3s,transform .3s var(--ease)}
-.brand:hover img{transform:scale(1.05)}
+.brand-logo{transition:height .3s,transform .3s var(--ease)}
+.brand:hover .brand-logo{transform:scale(1.05)}
 
 /* Reveal animation */
 .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -448,6 +430,23 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
 /* Primeira dobra: SEM ocultar via opacity: 0 ou delay. Garante visibilidade instantânea
    para que FCP e LCP ocorram sem nenhum atraso no primeiro frame pelo navegador. */
 .js .hero .reveal{opacity:1!important;transform:none!important;animation:none!important;transition:none!important}
+
+/* Renderização adiada do conteúdo abaixo da dobra. Não altera nada visualmente: o
+   navegador apenas adia layout/paint de cada bloco até ele estar perto de entrar na
+   tela, em vez de processar os ~13.000px da página inteira no primeiro frame.
+   contain-intrinsic-size reserva a altura para o scroll não pular (CLS segue 0), e o
+   prefixo "auto" faz o navegador memorizar a altura real depois do 1º render.
+   #operacao fica de fora de propósito: contém position:sticky. */
+.callout-band,#entregas,.steps-sec,#recebe,#cenarios,#sobre,#duvidas,.final,footer{content-visibility:auto}
+.callout-band{contain-intrinsic-size:249px;contain-intrinsic-size:auto 249px}
+#entregas{contain-intrinsic-size:1119px;contain-intrinsic-size:auto 1119px}
+.steps-sec{contain-intrinsic-size:1057px;contain-intrinsic-size:auto 1057px}
+#recebe{contain-intrinsic-size:2838px;contain-intrinsic-size:auto 2838px}
+#cenarios{contain-intrinsic-size:1609px;contain-intrinsic-size:auto 1609px}
+#sobre{contain-intrinsic-size:1353px;contain-intrinsic-size:auto 1353px}
+#duvidas{contain-intrinsic-size:683px;contain-intrinsic-size:auto 683px}
+.final{contain-intrinsic-size:606px;contain-intrinsic-size:auto 606px}
+footer{contain-intrinsic-size:577px;contain-intrinsic-size:auto 577px}
 
 /* ============================================================
    RESPONSIVE — 960px
@@ -802,6 +801,9 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
 #pac-wrap .oc-gtop .gc-sub{color:#8a8378!important}
 #pac-wrap .oc-badge{color:#ffb765!important}
 #pac-wrap footer,#pac-wrap footer *{color:#cbc4b7!important}
+/* A logo agora usa currentColor (um único <symbol> para header e rodapé), então
+   precisa escapar do "footer *" acima para continuar branca como antes. */
+#pac-wrap .foot-brand .logo-mark svg,#pac-wrap .foot-brand .logo-mark use{color:#fff!important}
 #pac-wrap .foot-bottom{color:#8a8276!important}
 #pac-wrap .foot-bottom span{color:#8a8276!important}
 #pac-wrap .foot-cta h4{color:#fff!important}
@@ -865,12 +867,13 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
 </style>
 </head>
 <body id="pac-wrap">
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true"><symbol id="ie-logo" viewBox="0 0 603 529" fill="none"><path d="M35.3195 509.703L37.4945 503.903H59.9695L62.1445 509.703H35.3195ZM48.587 485.633L40.032 505.788L39.452 507.093L31.912 524.928H25.0245L48.587 471.641L72.1496 524.928H65.262L57.8671 507.528L57.287 506.078L48.587 485.633ZM141.761 474.178H147.923V527.466L109.498 487.156V524.928H103.336V471.641L141.761 511.951V474.178ZM179.489 479.978V474.178H211.752V479.978H198.702V524.928H192.539V479.978H179.489ZM243.278 474.178H249.44V524.928H243.278V474.178ZM319.397 499.553C319.397 503.468 320.267 506.924 322.007 509.921C323.796 512.917 326.116 515.262 328.967 516.953C331.819 518.645 334.912 519.491 338.247 519.491C340.664 519.491 342.863 519.177 344.845 518.548C346.875 517.92 348.711 517.05 350.355 515.938C351.998 514.778 353.4 513.449 354.56 511.951V520.071C352.433 521.956 350.113 523.357 347.6 524.276C345.086 525.194 341.969 525.653 338.247 525.653C334.719 525.653 331.408 525.025 328.315 523.768C325.27 522.463 322.587 520.651 320.267 518.331C317.947 515.962 316.135 513.183 314.83 509.993C313.525 506.803 312.872 503.323 312.872 499.553C312.872 495.783 313.525 492.303 314.83 489.113C316.135 485.923 317.947 483.168 320.267 480.848C322.587 478.48 325.27 476.667 328.315 475.411C331.408 474.106 334.719 473.453 338.247 473.453C341.969 473.453 345.086 473.912 347.6 474.831C350.113 475.749 352.433 477.151 354.56 479.036V487.156C353.4 485.657 351.998 484.352 350.355 483.241C348.711 482.081 346.875 481.187 344.845 480.558C342.863 479.93 340.664 479.616 338.247 479.616C334.912 479.616 331.819 480.462 328.967 482.153C326.116 483.845 323.796 486.189 322.007 489.186C320.267 492.134 319.397 495.59 319.397 499.553ZM394.212 509.703L396.387 503.903H418.862L421.037 509.703H394.212ZM407.479 485.633L398.924 505.788L398.344 507.093L390.804 524.928H383.917L407.479 471.641L431.042 524.928H424.154L416.759 507.528L416.179 506.078L407.479 485.633ZM463.658 499.553C463.658 503.372 464.48 506.779 466.123 509.776C467.815 512.772 470.111 515.141 473.011 516.881C475.911 518.621 479.197 519.491 482.871 519.491C486.592 519.491 489.879 518.621 492.731 516.881C495.631 515.141 497.902 512.772 499.546 509.776C501.237 506.779 502.083 503.372 502.083 499.553C502.083 495.735 501.237 492.327 499.546 489.331C497.902 486.334 495.631 483.966 492.731 482.226C489.879 480.486 486.592 479.616 482.871 479.616C479.197 479.616 475.911 480.486 473.011 482.226C470.111 483.966 467.815 486.334 466.123 489.331C464.48 492.327 463.658 495.735 463.658 499.553ZM457.133 499.553C457.133 495.832 457.761 492.4 459.018 489.258C460.323 486.068 462.136 483.313 464.456 480.993C466.776 478.625 469.506 476.788 472.648 475.483C475.79 474.13 479.197 473.453 482.871 473.453C486.592 473.453 490 474.13 493.093 475.483C496.235 476.788 498.966 478.625 501.286 480.993C503.606 483.313 505.394 486.068 506.651 489.258C507.956 492.4 508.608 495.832 508.608 499.553C508.608 503.227 507.956 506.658 506.651 509.848C505.394 513.038 503.606 515.817 501.286 518.186C498.966 520.506 496.235 522.342 493.093 523.696C490 525.001 486.592 525.653 482.871 525.653C479.197 525.653 475.79 525.001 472.648 523.696C469.506 522.342 466.776 520.506 464.456 518.186C462.136 515.817 460.323 513.038 459.018 509.848C457.761 506.658 457.133 503.227 457.133 499.553ZM544.208 509.558C545.368 511.588 546.577 513.377 547.833 514.923C549.138 516.47 550.588 517.678 552.183 518.548C553.778 519.418 555.591 519.853 557.621 519.853C560.328 519.853 562.503 519.104 564.146 517.606C565.789 516.107 566.611 514.198 566.611 511.878C566.611 509.607 566.079 507.794 565.016 506.441C563.953 505.087 562.551 504 560.811 503.178C559.119 502.308 557.307 501.535 555.373 500.858C554.117 500.423 552.715 499.867 551.168 499.191C549.622 498.466 548.148 497.572 546.746 496.508C545.344 495.397 544.184 494.043 543.266 492.448C542.396 490.853 541.961 488.896 541.961 486.576C541.961 484.062 542.589 481.815 543.846 479.833C545.103 477.852 546.843 476.305 549.066 475.193C551.289 474.033 553.827 473.453 556.678 473.453C559.433 473.453 561.826 473.985 563.856 475.048C565.934 476.063 567.698 477.392 569.148 479.036C570.598 480.631 571.734 482.322 572.556 484.111L567.263 487.156C566.635 485.899 565.838 484.667 564.871 483.458C563.904 482.25 562.72 481.259 561.318 480.486C559.965 479.712 558.298 479.326 556.316 479.326C553.561 479.326 551.555 480.002 550.298 481.356C549.042 482.661 548.413 484.135 548.413 485.778C548.413 487.18 548.776 488.485 549.501 489.693C550.226 490.853 551.434 491.965 553.126 493.028C554.866 494.043 557.21 495.058 560.158 496.073C561.512 496.557 562.938 497.185 564.436 497.958C565.934 498.732 567.312 499.722 568.568 500.931C569.873 502.091 570.937 503.517 571.758 505.208C572.58 506.852 572.991 508.833 572.991 511.153C572.991 513.377 572.556 515.382 571.686 517.171C570.864 518.959 569.704 520.482 568.206 521.738C566.756 522.995 565.088 523.962 563.203 524.638C561.367 525.315 559.433 525.653 557.403 525.653C554.648 525.653 552.087 525.073 549.718 523.913C547.398 522.705 545.344 521.134 543.556 519.201C541.816 517.219 540.39 515.117 539.278 512.893L544.208 509.558Z" fill="currentColor"/><path d="M26.3882 393.845V380.706H79.3493V393.845H60.1V452H45.5357V393.845H26.3882ZM105.142 452V439.676H141.095V452H105.142ZM105.142 393.03V380.706H141.095V393.03H105.142ZM105.142 420.223V408.103H139.058V420.223H105.142ZM95.7723 380.706H109.827V452H95.7723V380.706ZM179.282 411.974L174.698 452H159.523L170.115 377.142L199.957 423.177L229.798 377.142L240.39 452H225.215L220.632 411.974L199.957 445.38L179.282 411.974ZM259.967 380.706H274.531V452H259.967V380.706ZM268.828 393.03V380.706H282.985C288.62 380.706 293.407 381.623 297.345 383.456C301.351 385.289 304.407 387.903 306.511 391.298C308.616 394.693 309.669 398.733 309.669 403.418C309.669 408.036 308.616 412.075 306.511 415.538C304.407 418.933 301.351 421.547 297.345 423.381C293.407 425.214 288.62 426.131 282.985 426.131H268.828V413.807H282.985C286.855 413.807 289.91 412.924 292.151 411.159C294.392 409.393 295.512 406.813 295.512 403.418C295.512 399.956 294.392 397.375 292.151 395.678C289.91 393.913 286.855 393.03 282.985 393.03H268.828ZM329.084 380.706H343.649V439.269H372.064V452H329.084V380.706ZM401.517 435.806L403.248 424.297H437.469L439.201 435.806H401.517ZM420.155 403.826L409.461 428.371L409.766 431.63L400.396 452H383.999L420.155 376.53L456.311 452H439.812L430.645 432.241L430.849 428.575L420.155 403.826ZM457.903 393.845V380.706H510.864V393.845H491.614V452H477.05V393.845H457.903ZM536.657 452V439.676H572.609V452H536.657ZM536.657 393.03V380.706H572.609V393.03H536.657ZM536.657 420.223V408.103H570.572V420.223H536.657ZM527.287 380.706H541.342V452H527.287V380.706Z" fill="currentColor"/><path d="M304.875 329L443 247.063V189.519L304.875 270.205L213.625 217.321L163 189.519V247.063L304.875 329Z" fill="#FF8A00"/><path fill-rule="evenodd" clip-rule="evenodd" d="M163 82.5627L304.875 0L443 82.5627L395.5 110.469L304.875 58.7947L213.625 110.469V199.438L163 169.595V82.5627Z" fill="currentColor"/></symbol></svg>
 
 <!-- HEADER -->
 <header id="header">
   <div class="container bar">
     <a class="brand" href="#top" aria-label="Templates Anti Caos">
-      <img src="https://institutoelpo.com/wp-content/uploads/2026/08/logo.svg" alt="Templates Anti Caos, Instituto Elpo" width="603" height="529" loading="eager" fetchpriority="high" decoding="sync" data-no-lazy="1" data-skip-lazy="" class="no-lazy skip-lazy">
+      <svg class="brand-logo" viewBox="0 0 603 529" role="img" aria-label="Templates Anti Caos, Instituto Elpo"><use href="#ie-logo"/></svg>
     </a>
     <nav class="nav-links">
       <a href="#operacao">A operação</a>
@@ -1227,7 +1230,7 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
 </section>
 
 <!-- PAIN vs DREAM -->
-<section class="section">
+<section class="section" id="cenarios">
   <div class="container">
     <div class="section-head center reveal">
       <span class="eyebrow"><span class="dot"></span>Dois cenários possíveis</span>
@@ -1271,7 +1274,14 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
     <div class="about-wrap">
       <div class="about-photo reveal">
         <div class="frame">
-          <img src="https://institutoelpo.com/wp-content/uploads/2026/08/priscila.webp" alt="Priscila Elpo" width="1289" height="1600" loading="lazy" decoding="async">
+          <!-- A foto nunca é exibida acima de ~460px CSS, mas o arquivo original tem 731 KiB.
+               O srcset faz o navegador baixar a versão de 768px (367 KiB) em vez da original.
+               Ao subir priscila-460.webp e priscila-920.webp, troque as URLs abaixo: caem para 16/47 KiB. -->
+          <img src="https://institutoelpo.com/wp-content/uploads/2026/08/priscila.webp"
+               srcset="https://institutoelpo.com/wp-content/uploads/2026/08/priscila-768x953.webp 768w,
+                       https://institutoelpo.com/wp-content/uploads/2026/08/priscila.webp 1289w"
+               sizes="(max-width:960px) calc(100vw - 48px), 460px"
+               alt="Priscila Elpo" width="1289" height="1600" loading="lazy" decoding="async">
         </div>
         <div class="about-badge">
           <b>+200</b>
@@ -1338,12 +1348,7 @@ footer{background:var(--ink);color:#cbc4b7;padding:64px 0 34px}
     <div class="foot-top">
       <div class="foot-brand">
         <span class="logo-mark" role="img" aria-label="Templates Anti Caos — Instituto Elpo">
-          <svg viewBox="0 0 603 529" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M35.3195 509.703L37.4945 503.903H59.9695L62.1445 509.703H35.3195ZM48.587 485.633L40.032 505.788L39.452 507.093L31.912 524.928H25.0245L48.587 471.641L72.1496 524.928H65.262L57.8671 507.528L57.287 506.078L48.587 485.633ZM141.761 474.178H147.923V527.466L109.498 487.156V524.928H103.336V471.641L141.761 511.951V474.178ZM179.489 479.978V474.178H211.752V479.978H198.702V524.928H192.539V479.978H179.489ZM243.278 474.178H249.44V524.928H243.278V474.178ZM319.397 499.553C319.397 503.468 320.267 506.924 322.007 509.921C323.796 512.917 326.116 515.262 328.967 516.953C331.819 518.645 334.912 519.491 338.247 519.491C340.664 519.491 342.863 519.177 344.845 518.548C346.875 517.92 348.711 517.05 350.355 515.938C351.998 514.778 353.4 513.449 354.56 511.951V520.071C352.433 521.956 350.113 523.357 347.6 524.276C345.086 525.194 341.969 525.653 338.247 525.653C334.719 525.653 331.408 525.025 328.315 523.768C325.27 522.463 322.587 520.651 320.267 518.331C317.947 515.962 316.135 513.183 314.83 509.993C313.525 506.803 312.872 503.323 312.872 499.553C312.872 495.783 313.525 492.303 314.83 489.113C316.135 485.923 317.947 483.168 320.267 480.848C322.587 478.48 325.27 476.667 328.315 475.411C331.408 474.106 334.719 473.453 338.247 473.453C341.969 473.453 345.086 473.912 347.6 474.831C350.113 475.749 352.433 477.151 354.56 479.036V487.156C353.4 485.657 351.998 484.352 350.355 483.241C348.711 482.081 346.875 481.187 344.845 480.558C342.863 479.93 340.664 479.616 338.247 479.616C334.912 479.616 331.819 480.462 328.967 482.153C326.116 483.845 323.796 486.189 322.007 489.186C320.267 492.134 319.397 495.59 319.397 499.553ZM394.212 509.703L396.387 503.903H418.862L421.037 509.703H394.212ZM407.479 485.633L398.924 505.788L398.344 507.093L390.804 524.928H383.917L407.479 471.641L431.042 524.928H424.154L416.759 507.528L416.179 506.078L407.479 485.633ZM463.658 499.553C463.658 503.372 464.48 506.779 466.123 509.776C467.815 512.772 470.111 515.141 473.011 516.881C475.911 518.621 479.197 519.491 482.871 519.491C486.592 519.491 489.879 518.621 492.731 516.881C495.631 515.141 497.902 512.772 499.546 509.776C501.237 506.779 502.083 503.372 502.083 499.553C502.083 495.735 501.237 492.327 499.546 489.331C497.902 486.334 495.631 483.966 492.731 482.226C489.879 480.486 486.592 479.616 482.871 479.616C479.197 479.616 475.911 480.486 473.011 482.226C470.111 483.966 467.815 486.334 466.123 489.331C464.48 492.327 463.658 495.735 463.658 499.553ZM457.133 499.553C457.133 495.832 457.761 492.4 459.018 489.258C460.323 486.068 462.136 483.313 464.456 480.993C466.776 478.625 469.506 476.788 472.648 475.483C475.79 474.13 479.197 473.453 482.871 473.453C486.592 473.453 490 474.13 493.093 475.483C496.235 476.788 498.966 478.625 501.286 480.993C503.606 483.313 505.394 486.068 506.651 489.258C507.956 492.4 508.608 495.832 508.608 499.553C508.608 503.227 507.956 506.658 506.651 509.848C505.394 513.038 503.606 515.817 501.286 518.186C498.966 520.506 496.235 522.342 493.093 523.696C490 525.001 486.592 525.653 482.871 525.653C479.197 525.653 475.79 525.001 472.648 523.696C469.506 522.342 466.776 520.506 464.456 518.186C462.136 515.817 460.323 513.038 459.018 509.848C457.761 506.658 457.133 503.227 457.133 499.553ZM544.208 509.558C545.368 511.588 546.577 513.377 547.833 514.923C549.138 516.47 550.588 517.678 552.183 518.548C553.778 519.418 555.591 519.853 557.621 519.853C560.328 519.853 562.503 519.104 564.146 517.606C565.789 516.107 566.611 514.198 566.611 511.878C566.611 509.607 566.079 507.794 565.016 506.441C563.953 505.087 562.551 504 560.811 503.178C559.119 502.308 557.307 501.535 555.373 500.858C554.117 500.423 552.715 499.867 551.168 499.191C549.622 498.466 548.148 497.572 546.746 496.508C545.344 495.397 544.184 494.043 543.266 492.448C542.396 490.853 541.961 488.896 541.961 486.576C541.961 484.062 542.589 481.815 543.846 479.833C545.103 477.852 546.843 476.305 549.066 475.193C551.289 474.033 553.827 473.453 556.678 473.453C559.433 473.453 561.826 473.985 563.856 475.048C565.934 476.063 567.698 477.392 569.148 479.036C570.598 480.631 571.734 482.322 572.556 484.111L567.263 487.156C566.635 485.899 565.838 484.667 564.871 483.458C563.904 482.25 562.72 481.259 561.318 480.486C559.965 479.712 558.298 479.326 556.316 479.326C553.561 479.326 551.555 480.002 550.298 481.356C549.042 482.661 548.413 484.135 548.413 485.778C548.413 487.18 548.776 488.485 549.501 489.693C550.226 490.853 551.434 491.965 553.126 493.028C554.866 494.043 557.21 495.058 560.158 496.073C561.512 496.557 562.938 497.185 564.436 497.958C565.934 498.732 567.312 499.722 568.568 500.931C569.873 502.091 570.937 503.517 571.758 505.208C572.58 506.852 572.991 508.833 572.991 511.153C572.991 513.377 572.556 515.382 571.686 517.171C570.864 518.959 569.704 520.482 568.206 521.738C566.756 522.995 565.088 523.962 563.203 524.638C561.367 525.315 559.433 525.653 557.403 525.653C554.648 525.653 552.087 525.073 549.718 523.913C547.398 522.705 545.344 521.134 543.556 519.201C541.816 517.219 540.39 515.117 539.278 512.893L544.208 509.558Z" fill="#ffffff"/>
-            <path d="M26.3882 393.845V380.706H79.3493V393.845H60.1V452H45.5357V393.845H26.3882ZM105.142 452V439.676H141.095V452H105.142ZM105.142 393.03V380.706H141.095V393.03H105.142ZM105.142 420.223V408.103H139.058V420.223H105.142ZM95.7723 380.706H109.827V452H95.7723V380.706ZM179.282 411.974L174.698 452H159.523L170.115 377.142L199.957 423.177L229.798 377.142L240.39 452H225.215L220.632 411.974L199.957 445.38L179.282 411.974ZM259.967 380.706H274.531V452H259.967V380.706ZM268.828 393.03V380.706H282.985C288.62 380.706 293.407 381.623 297.345 383.456C301.351 385.289 304.407 387.903 306.511 391.298C308.616 394.693 309.669 398.733 309.669 403.418C309.669 408.036 308.616 412.075 306.511 415.538C304.407 418.933 301.351 421.547 297.345 423.381C293.407 425.214 288.62 426.131 282.985 426.131H268.828V413.807H282.985C286.855 413.807 289.91 412.924 292.151 411.159C294.392 409.393 295.512 406.813 295.512 403.418C295.512 399.956 294.392 397.375 292.151 395.678C289.91 393.913 286.855 393.03 282.985 393.03H268.828ZM329.084 380.706H343.649V439.269H372.064V452H329.084V380.706ZM401.517 435.806L403.248 424.297H437.469L439.201 435.806H401.517ZM420.155 403.826L409.461 428.371L409.766 431.63L400.396 452H383.999L420.155 376.53L456.311 452H439.812L430.645 432.241L430.849 428.575L420.155 403.826ZM457.903 393.845V380.706H510.864V393.845H491.614V452H477.05V393.845H457.903ZM536.657 452V439.676H572.609V452H536.657ZM536.657 393.03V380.706H572.609V393.03H536.657ZM536.657 420.223V408.103H570.572V420.223H536.657ZM527.287 380.706H541.342V452H527.287V380.706Z" fill="#ffffff"/>
-            <path d="M304.875 329L443 247.063V189.519L304.875 270.205L213.625 217.321L163 189.519V247.063L304.875 329Z" fill="#FF8A00"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M163 82.5627L304.875 0L443 82.5627L395.5 110.469L304.875 58.7947L213.625 110.469V199.438L163 169.595V82.5627Z" fill="#ffffff"/>
-          </svg>
+          <svg viewBox="0 0 603 529" fill="none" xmlns="http://www.w3.org/2000/svg"><use href="#ie-logo"/></svg>
         </span>
         <p>Não organize o caos. Estruture o lançamento antes que o caos aconteça. Uma operação completa de lançamento, pronta dentro do ClickUp.</p>
         <div class="socials">
